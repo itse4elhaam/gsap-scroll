@@ -1,12 +1,9 @@
-import { useEffect } from "react";
-import makeScroll from "../utils/makeScroll";
+import { useMakeScroll } from "../utils/makeScroll";
 import "./ScrollView.css"
 
 export default function ScrollView() {
 
-    useEffect(() => {
-        makeScroll();
-    }, [window, document])
+    useMakeScroll();
 
     return (
         <>
