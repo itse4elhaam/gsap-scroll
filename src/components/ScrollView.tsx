@@ -1,6 +1,8 @@
 import { useMakeScroll } from "../utils/makeScroll";
 import "./ScrollView.css"
 
+const IMG_SRC = "/logo.jpeg"
+
 export default function ScrollView() {
 
     const {container} = useMakeScroll();
@@ -12,7 +14,7 @@ export default function ScrollView() {
 
             <section className="image-unmask">
 
-                <img id="img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/smile.jpg" />
+                <img id="img" src={IMG_SRC} />
 
                     <svg id="svg">
                         <defs>
@@ -69,7 +71,7 @@ export default function ScrollView() {
 
             </section>
 
-            <img id="img-fixed" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/smile.jpg" />
+            <img id="img-fixed" src={IMG_SRC}/>
 
         </div>
 
