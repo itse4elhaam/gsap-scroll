@@ -1,11 +1,15 @@
 //@ts-nocheck
-import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export function useMakeScroll() {
-	useEffect(() => {
+	const container = useRef(null);
+
+	useGSAP(() => {
 		console.clear();
 
 		const svg = document.querySelector("#svg");
@@ -63,7 +67,7 @@ export function useMakeScroll() {
 			.set(imgFixed, {
 				opacity: 1,
 			});
-		console.log("tl", tl);
+
 		function init() {
 			imgWidth = img.naturalWidth;
 			imgHeight = img.naturalHeight;
@@ -93,7 +97,6 @@ export function useMakeScroll() {
 			gsap.set(imgFixed, { width, height });
 
 			tl.invalidate();
-
 			ScrollTrigger.refresh();
 		}
 
@@ -104,5 +107,7 @@ export function useMakeScroll() {
 			window.removeEventListener("load", init);
 			window.removeEventListener("resize", resize);
 		};
-	}, []);
+	}, { dependencies: [], scope: container});
+
+	return {container}
 }
